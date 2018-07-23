@@ -298,23 +298,23 @@ table.dataTable {
     }
 
     table.dataTable thead .sorting {
-        background: url("images/dataTables_sort_both.png") no-repeat center right;
+        background: url("/images/dataTables_sort_both.png") no-repeat center right;
     }
 
     table.dataTable thead .sorting_asc {
-        background: url("images/dataTables_sort_asc.png") no-repeat center right;
+        background: url("/images/dataTables_sort_asc.png") no-repeat center right;
     }
 
     table.dataTable thead .sorting_desc {
-        background: url("images/dataTables_sort_desc.png") no-repeat center right;
+        background: url("/images/dataTables_sort_desc.png") no-repeat center right;
     }
 
     table.dataTable thead .sorting_asc_disabled {
-        background: url("images/dataTables_sort_asc_disabled.png") no-repeat center right;
+        background: url("/images/dataTables_sort_asc_disabled.png") no-repeat center right;
     }
 
     table.dataTable thead .sorting_desc_disabled {
-        background: url("images/dataTables_sort_desc_disabled.png") no-repeat center right;
+        background: url("/images/dataTables_sort_desc_disabled.png") no-repeat center right;
     }
 
     table.dataTable tbody tr {
@@ -970,12 +970,12 @@ table.dataTable tbody td h5 {
 
 
 td.details-control {
-    background: url('images/dataTables_details_open.png') no-repeat center center;
+    background: url('/images/dataTables_details_open.png') no-repeat center center;
     cursor: pointer;
 }
 
 tr.shown td.details-control {
-    background: url('images/dataTables_details_close.png') no-repeat center center;
+    background: url('/images/dataTables_details_close.png') no-repeat center center;
 }
 
 /*-----------CUSTOM CSS for Energy.gov embedding--------------*/
@@ -1139,23 +1139,23 @@ table.dataTable {
     }
 
     table.dataTable thead .sorting {
-        background-image: url("images/dataTables_sort_both.png");
+        background-image: url("/images/dataTables_sort_both.png");
     }
 
     table.dataTable thead .sorting_asc {
-        background-image: url("images/dataTables_sort_asc.png");
+        background-image: url("/images/dataTables_sort_asc.png");
     }
 
     table.dataTable thead .sorting_desc {
-        background-image: url("images/dataTables_sort_desc.png");
+        background-image: url("/images/dataTables_sort_desc.png");
     }
 
     table.dataTable thead .sorting_asc_disabled {
-        background-image: url("images/dataTables_sort_asc_disabled.png");
+        background-image: url("/images/dataTables_sort_asc_disabled.png");
     }
 
     table.dataTable thead .sorting_desc_disabled {
-        background-image: url("images/dataTables_sort_desc_disabled.png");
+        background-image: url("/images/dataTables_sort_desc_disabled.png");
     }
 
     table.dataTable tbody tr {
