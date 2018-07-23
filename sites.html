@@ -155,12 +155,12 @@
 					"data": null, render: function (data, type, row) {
 						var twitter = '';
 						data['Twitter Link'].split(';').forEach(function(url) {
-							twitter += '<a href="' + url + '" title="' + url + '" target="_blank"><img src="/images/twitter-icon-400x400.png" width="20px" /></a>';
+							twitter += '<a href="' + url + '" title="' + url + '" target="_blank"><img src="images/twitter-icon-400x400.png" width="20px" /></a>';
 						 });
 						if (data['Twitter Link'] == '') twitter = '';
 						var facebook = '';
 						data['Facebook Link'].split(';').forEach(function(url) {
-							facebook += '<a href="' + url + '" title="' + url + '" target="_blank"><img src="/images/facebook-icon-300x300.png" width="20px" /></a>';
+							facebook += '<a href="' + url + '" title="' + url + '" target="_blank"><img src="images/facebook-icon-300x300.png" width="20px" /></a>';
 						});
 						if (data['Facebook Link'] == '') facebook = '';
 						return facebook + twitter;
