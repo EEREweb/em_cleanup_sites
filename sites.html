@@ -221,7 +221,11 @@
 				//$('td', row).eq(0).append(format(data));
 			},
 			"initComplete": function (settings, json) {
-
+			
+				$('#projects-datatable_filter').find('input').keyup(function () {
+					search();	
+				}
+				
 				// Add event listener for opening and closing details
 				$('#projects-datatable tbody').on('click', 'td.details-control', function () {
 					var tr = $(this).closest('tr');
