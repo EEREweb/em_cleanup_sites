@@ -87,7 +87,7 @@
 		if (term == '') {
 			dtable.search('').columns().search('').draw();
 		} else {
-			dtable.column(col).search(term, true, false, true).draw();
+			dtable.columns().search(term, true, false, true).draw();
 		}
 	
     }
@@ -228,6 +228,7 @@
 			"initComplete": function (settings, json) {
 			
 				$('#projects-datatable_filter').find('input').keyup(function () {
+					search_dt_column($(this).val());
 					search();	
 				});
 				
