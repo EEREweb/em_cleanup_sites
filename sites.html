@@ -87,7 +87,7 @@
 		if (term == '') {
 			dtable.search('').columns().search('').draw();
 		} else {
-			dtable.column(col).search(term, false, false, false).draw();
+			dtable.column(col).search(term, true, false, true).draw();
 		}
 	
     }
