@@ -87,8 +87,8 @@
 		if (term == '') {
 			dtable.search('').columns().search('').draw();
 		} else {
-			term = '^(' + term + ')$';
-			dtable.columns().data().search(term, false, true, true).draw();
+			term = '^' + term + '$';
+			dtable.columns().data().search(term, true, false, true).draw();
 		}
 	
     }
