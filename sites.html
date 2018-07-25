@@ -87,8 +87,8 @@
 		if (term == '') {
 			dtable.search('').columns().search('').draw();
 		} else {
-			term = '^' + term + '$';
-			dtable.columns().data().search(term, true, false, true).draw();
+			//term = '^' + term + '$';
+			dtable.columns().data().search(term, false, false, true).draw();
 		}
 	
     }
@@ -229,8 +229,8 @@
 			"initComplete": function (settings, json) {
 			
 				$('#projects-datatable_filter').find('input').keyup(function () {
-					search_dt_column($('#projects-datatable').DataTable(), '', $(this));
 					search();
+					search_dt_column($('#projects-datatable').DataTable(), '', $(this));
 				});
 				
 				// Add event listener for opening and closing details
