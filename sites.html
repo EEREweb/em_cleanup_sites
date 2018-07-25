@@ -81,7 +81,7 @@
 	}
 	
     function search_dt_column(dtable, col, cntrl) {
-        var term = '';
+        var term = cntrl.val();
 
 		//console.log(term);
 		if (term == '') {
@@ -230,7 +230,7 @@
 			
 				$('#projects-datatable_filter').find('input').keyup(function () {
 					search_dt_column($('#projects-datatable').DataTable(), '', $(this));
-					search();	
+					search();
 				});
 				
 				// Add event listener for opening and closing details
