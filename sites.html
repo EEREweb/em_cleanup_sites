@@ -228,7 +228,7 @@
 			"initComplete": function (settings, json) {
 			
 				$('#projects-datatable_filter').find('input').keyup(function () {
-					search_dt_column($(this).val());
+					search_dt_column($('#projects-datatable').DataTable(), '', $(this));
 					search();	
 				});
 				
