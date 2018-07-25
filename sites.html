@@ -43,71 +43,6 @@
 
 <script>
 
-    //setup Column locations
-    var objColumn = {
-        "Program": 4,
-    };
-
-    /* Formatting function for row details - modify as you need */
-    function format(d) {
-        return '<h4>Major Contractor(s):</h4>' + 
-                '<p class="dt_details">' + d['Major Contractor(s)'] + '</p>';
-    }
-	
-	L.mapbox.accessToken = 'pk.eyJ1IjoiZW5lcmd5IiwiYSI6IkozTG9BZDQifQ.1WKh4U0kKCdknF3gxBOF7Q';
-	var map = L.mapbox.map('map', 'energy.nda103il',
-	{
-		maxZoom: 9, minZoom: 2, attributionControl: false, legendControl: { position: 'bottomright' }
-	}).setView([40, -97], 4);
-
-	var featureLayer = L.mapbox.featureLayer();
-
-	// The clusterGroup gets each marker in the group added to it
-	// once loaded, and then is added to the map
-	var clusterGroup = new L.MarkerClusterGroup({
-		showCoverageOnHover: false,
-		spiderfyOnMaxZoom: true,
-		maxClusterRadius: 20
-	});
-
-	var resetMap = function () {
-		$('#projects-datatable_filter').find('input').val('');
-		$('#projects-datatable').DataTable().search('').columns().search('').draw();
-		search('');
-		map.setView([40, -97], 4);
-	};
-	var zoomToData = function () {
-		map.fitBounds(clusterGroup.getBounds(), { padding: [45, 45] });
-	}
-	
-    function search_dt_column(dtable, col, cntrl) {
-        var term = cntrl.val();
-
-		//console.log(term);
-		if (term == '') {
-			dtable.search('').columns().search('').draw();
-		} else {
-			//term = '^' + term + '$';
-			dtable.columns().data().search(term, false, false, true).draw();
-		}
-	
-    }
-
-    function filter_dt_column(dtable, col, control) {
-        var aryCheckVals = [];
-        $(control + ' input:checked').each(function () {
-            aryCheckVals.push(this.id);
-        });
-        var strSelectedVals = aryCheckVals.join('|');
-        strSelectedVals = strSelectedVals.replace(/\./g, "\\.");
-		
-
-        dtable.column(col)
-			//.search( val ? strSelectedVals : val, true, false )
-				.search(strSelectedVals, true, false)
-				.draw();
-    }
-
 	$.when($.ajax({
 		type: "GET",
 		url: 'data/cleanup_sites_2018_07_12.csv',
@@ -303,6 +238,70 @@
 		});
 
 	}
+    //setup Column locations
+    var objColumn = {
+        //"Program": 4,
+    };
+
+    /* Formatting function for row details - modify as you need */
+    function format(d) {
+        return '<h4>Major Contractor(s):</h4>' + 
+                '<p class="dt_details">' + d['Major Contractor(s)'] + '</p>';
+    }
+	
+	L.mapbox.accessToken = 'pk.eyJ1IjoiZW5lcmd5IiwiYSI6IkozTG9BZDQifQ.1WKh4U0kKCdknF3gxBOF7Q';
+	var map = L.mapbox.map('map', 'energy.nda103il',
+	{
+		maxZoom: 9, minZoom: 2, attributionControl: false, legendControl: { position: 'bottomright' }
+	}).setView([40, -97], 4);
+
+	var featureLayer = L.mapbox.featureLayer();
+
+	// The clusterGroup gets each marker in the group added to it
+	// once loaded, and then is added to the map
+	var clusterGroup = new L.MarkerClusterGroup({
+		showCoverageOnHover: false,
+		spiderfyOnMaxZoom: true,
+		maxClusterRadius: 10
+	});
+
+	var resetMap = function () {
+		$('#projects-datatable_filter').find('input').val('');
+		$('#projects-datatable').DataTable().search('').columns().search('').draw();
+		search('');
+		map.setView([40, -97], 4);
+	};
+	var zoomToData = function () {
+		map.fitBounds(clusterGroup.getBounds(), { padding: [45, 45] });
+	}
+	
+    function search_dt_column(dtable, col, cntrl) {
+        var term = cntrl.val();
+
+		//console.log(term);
+		if (term == '') {
+			dtable.search('').columns().search('').draw();
+		} else {
+			//term = '^' + term + '$';
+			dtable.columns().data().search(term, false, false, true).draw();
+		}
+	
+    }
+
+    function filter_dt_column(dtable, col, control) {
+        var aryCheckVals = [];
+        $(control + ' input:checked').each(function () {
+            aryCheckVals.push(this.id);
+        });
+        var strSelectedVals = aryCheckVals.join('|');
+        strSelectedVals = strSelectedVals.replace(/\./g, "\\.");
+		
+
+        dtable.column(col)
+			//.search( val ? strSelectedVals : val, true, false )
+				.search(strSelectedVals, true, false)
+				.draw();
+    }
 
 	function search(strFilterName) {
 		// get the value of the search input field
@@ -334,7 +333,7 @@
 		clusterGroup = new L.MarkerClusterGroup({
 			showCoverageOnHover: false,
 			spiderfyOnMaxZoom: true,
-			maxClusterRadius: 20
+			maxClusterRadius: 10
 		});
 		//update layers with new filtered data
 		customPopup(featureLayer);
