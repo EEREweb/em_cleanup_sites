@@ -6019,7 +6019,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     padding-left: 0;
     margin: 20px 0;
     border-radius: 4px;
-	float: left;
+	/*float: left;*/
 }
 
     .pagination > li {
