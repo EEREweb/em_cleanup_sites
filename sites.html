@@ -43,7 +43,7 @@
 
 	$.when($.ajax({
 		type: "GET",
-		url: 'data/cleanup_sites_2018_08_20.csv',
+		url: 'data/cleanup_sites_2018_09_10.csv',
 		aysnc: false
 
 		//success: csvLoaded
@@ -102,6 +102,15 @@
 					}
 				},
 				{ "data": "By the Numbers" },
+				{
+					"data": null, render: function (data, type, row) {
+						var linkText = '';
+						if (data['ECA Fact Sheets'])
+							linkText = '<a href="' + data['ECA Fact Sheets'] + '">Site Profile</a>';
+						
+						return linkText;
+					}
+				},
 			],
 			"columnDefs": [
 				{
@@ -153,6 +162,11 @@
 				{
 					"targets": [10],
 					"title": "By the Numbers",
+					"searchable": false
+				},
+				{
+					"targets": [11],
+					"title": "ECA Fact Sheets",
 					"searchable": false
 				},
 			],
