@@ -21,11 +21,11 @@
 <base target="_blank">
 
 <div class="row">
-    <p class="map_pretext1"> 
+    <p class="map_pretext1" style="display: none;"> 
 		As the largest environmental cleanup program in the world, EM has been charged with the responsibility of cleaning up 107 sites across the country whose area is equal to the combined area of Rhode Island and Delaware. 
 		The map below shows the remaining 16 active EM sites where cleanup work is currently ongoing. Learn more about the <a aria-label="Read more about 91 completed sites here" href="//www.energy.gov/sites/prod/files/2016/03/f30/Geographic%20Sites%20completed_2016_Answer.pdf" title="Read more about 91 completed sites here">91 completed sites here</a>.
-	</p>
     <br />
+	</p>
 
     <div class="col-sm-12">
         <div id='map'></div>		
@@ -43,7 +43,7 @@
 
 	$.when($.ajax({
 		type: "GET",
-		url: 'data/cleanup_sites_2018_09_10.csv',
+		url: 'data/cleanup_sites_032119.csv',
 		aysnc: false
 
 		//success: csvLoaded
@@ -83,7 +83,7 @@
 				{ "data": "Number of Employees" },
 				{ "data": "EM Manager" },
 				{ "data": "Type(s) of Cleanup Work Performed" },
-				{ "data": "FY 2019 Budget Request" },
+				{ "data": "FY 2020 Budget Request" },
 				{ "data": "Projected Lifecycle Completion Cost/Schedule" },
 				{ "data": "Major Contractor(s)" },
 				{
@@ -105,7 +105,6 @@
 				{
 					"data": null, render: function (data, type, row) {
 						var linkText = '';
-						console.log(data['ECA Fact Sheets']);
 						if (data['ECA Fact Sheets'])
 							linkText = '<a href="' + data['ECA Fact Sheets'] + '">Site Profile</a>';
 						
@@ -142,7 +141,7 @@
 				},
 				{
 					"targets": [6],
-					"title": "FY 2019 <nobr>Budget Request</nobr>",
+					"title": "FY 2020 <nobr>Budget Request</nobr>",
 					"searchable": false
 				},
 				{
@@ -231,7 +230,7 @@
 					'<div class="callout_label">Manager: <\/div>' + layer.feature.properties['EM Manager'] + '<\/div>' +
 					'<div class="callout_label">Type(s) of Cleanup Work Performed:<\/div> '
 					+ layer.feature.properties['Type(s) of Cleanup Work Performed'] + '<br\/>' +
-					'<div class="callout_label">FY 2019 Budget Request:<\/div> ' + layer.feature.properties['FY 2019 Budget Request'] + ' <br\/>' +
+					'<div class="callout_label">FY 2020 Budget Request:<\/div> ' + layer.feature.properties['FY 2020 Budget Request'] + ' <br\/>' +
 					'<div class="callout_label">Projected Lifecycle Completion Cost/Schedule:<\/div> ' + layer.feature.properties['Projected Lifecycle Completion Cost/Schedule'] + ' <br\/>' +
 					'<div class="callout_label">Major Contractor(s):<\/div> <div class="contractors" style="max-height:90px; overflow-y:scroll">' + layer.feature.properties['Major Contractor(s)'] + '<\/div>';
 					//console.log(layer.feature.properties['Site Name'] + ' = ' + layer.feature.properties['Major Contractor(s)'].length);
@@ -448,6 +447,7 @@
 	L.control.jump().addTo(map);
 
 </script>
+
 
 <script src="https://pym.nprapps.org/pym.v1.min.js"></script>
 <script src="https://eereweb.github.io/apps-common/js/shim.js"></script>
