@@ -35,7 +35,7 @@
 		<br>
 		<table id="projects-datatable" class="display dataTable" cellspacing="0"></table>
 		<br>
-		<span style="font-size: 14px;">*Lifecycle cost and schedule information will not be available until completion of a final environmental impact statement and the issuance of a record of decision.</span>
+		<!--<span style="font-size: 14px;">*Lifecycle cost and schedule information will not be available until completion of a final environmental impact statement and the issuance of a record of decision.</span>-->
 	</div>
 </div>
 
@@ -43,7 +43,7 @@
 
 	$.when($.ajax({
 		type: "GET",
-		url: 'data/cleanup_sites_052819.csv',
+		url: 'data/cleanup_sites_070620_v2.csv',
 		aysnc: false
 
 		//success: csvLoaded
@@ -83,8 +83,7 @@
 				{ "data": "Number of Employees" },
 				{ "data": "EM Manager" },
 				{ "data": "Type(s) of Cleanup Work Performed" },
-				{ "data": "FY 2020 Budget Request" },
-				{ "data": "Projected Lifecycle Completion Cost/Schedule" },
+				{ "data": "FY 2021 Budget Request" },
 				{ "data": "Major Contractor(s)" },
 				{
 					"data": null, render: function (data, type, row) {
@@ -98,7 +97,18 @@
 							facebook += '<a href="' + url + '" title="' + url + '" target="_blank"><img src="images/facebook-icon-300x300.png" width="20px" /></a>';
 						});
 						if (data['Facebook Link'] == '') facebook = '';
-						return facebook + twitter;
+						var youtube = '';
+						data['YouTube'].split(';').forEach(function(url) {
+							youtube += '<a href="' + url + '" title="' + url + '" target="_blank"><img src="images/youtube-icon.png" width="20px" /></a>';
+						 });
+						if (data['YouTube'] == '') youtube = '';
+						var flickr = '';
+						data['Flickr'].split(';').forEach(function(url) {
+							flickr += '<a href="' + url + '" title="' + url + '" target="_blank"><img src="images/flickr-icon.png" width="20px" /></a>';
+						 });
+						if (data['Flickr'] == '') flickr = '';
+
+						return facebook + twitter + youtube + flickr;
 					}
 				},
 				{ "data": "By the Numbers" },
@@ -141,34 +151,30 @@
 				},
 				{
 					"targets": [6],
-					"title": "FY 2020 <nobr>Budget Request</nobr>",
+					"title": "FY 2021 <nobr>Budget Request</nobr>",
 					"searchable": false
 				},
 				{
 					"targets": [7],
-					"title": "Projected Lifecycle Completion Cost/Schedule",
-					"searchable": false
-				},
-				{
-					"targets": [8],
 					"title": "Major Contractor(s)",
 					"visible": false
 				},
 				{
-					"targets": [9],
+					"targets": [8],
 					"title": "Social Media",
 					"searchable": false
 				},
 				{
-					"targets": [10],
+					"targets": [9],
 					"title": "By the Numbers",
 					"searchable": false
 				},
 				{
-					"targets": [11],
+					"targets": [10],
 					"title": "ECA Fact Sheets",
 					"searchable": false
 				},
+				
 			],
 			"createdRow": function (row, data, index) {
 				//$('td', row).eq(0).append(format(data));
@@ -230,8 +236,7 @@
 					'<div class="callout_label">Manager: <\/div>' + layer.feature.properties['EM Manager'] + '<\/div>' +
 					'<div class="callout_label">Type(s) of Cleanup Work Performed:<\/div> '
 					+ layer.feature.properties['Type(s) of Cleanup Work Performed'] + '<br\/>' +
-					'<div class="callout_label">FY 2020 Budget Request:<\/div> ' + layer.feature.properties['FY 2020 Budget Request'] + ' <br\/>' +
-					'<div class="callout_label">Projected Lifecycle Completion Cost/Schedule:<\/div> ' + layer.feature.properties['Projected Lifecycle Completion Cost/Schedule'] + ' <br\/>' +
+					'<div class="callout_label">FY 2021 Budget Request:<\/div> ' + layer.feature.properties['FY 2021 Budget Request'] + ' <br\/>' +
 					'<div class="callout_label">Major Contractor(s):<\/div> <div class="contractors" style="max-height:90px; overflow-y:scroll">' + layer.feature.properties['Major Contractor(s)'] + '<\/div>';
 					//console.log(layer.feature.properties['Site Name'] + ' = ' + layer.feature.properties['Major Contractor(s)'].length);
 			if (layer.feature.properties['Major Contractor(s)'].length < 160) content = content.replace('overflow-y:scroll', 'overflow-y:hidden');
